@@ -53,7 +53,10 @@ class Game2048 {
     return document.getElementById(`node-${i}-${j}`);
   }
   setElementVal(element, value) {
-    if (element) element.innerText = value;
+    if (element)
+      element.innerHTML = `<p class="${
+        value > 0 ? "block-2048" : ""
+      }">${value}<p>`;
   }
   initializeNodes() {
     const [i, j] = this.getValidEmptyRange();
@@ -145,6 +148,7 @@ class Game2048 {
         this.updateScore(stack[stack.length - 1]);
       }
     }
+    debugger;
     const extra = Array(4 - stack.length).fill(0);
     if (isLeft) {
       return stack.concat(extra);
