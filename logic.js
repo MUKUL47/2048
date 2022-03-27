@@ -65,7 +65,7 @@ class Logic {
         const updatedNodes = this.filterNodes(a[i], key == "ArrowUp");
         for (let k = 0; k < 4; k++) this.#nodes[k][i] = updatedNodes[k];
       }
-      this.#animate.animateYAxisNodes(this.#nodes, key === "ArrowUp");
+      this.#animate.animateNodes(this.#nodes, key === "ArrowUp", false);
       await this.#sleep(this.#animate.getAnimationTime());
     } else {
       for (let i = 0; i < this.#nodes.length; i++) {
@@ -76,7 +76,7 @@ class Logic {
         );
         this.#nodes[i] = newNodes;
       }
-      this.#animate.animateXAxisNodes(this.#nodes, key === "ArrowLeft");
+      this.#animate.animateNodes(this.#nodes, key === "ArrowLeft", true);
       await this.#sleep(this.#animate.getAnimationTime());
     }
     if (this.#checkHasEmptyNodes()) {
